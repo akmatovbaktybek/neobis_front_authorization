@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
    return (
-      <form action="submit" className="login-form">
-         <div className="login-form__content">
-            <div className="login-form__img">
-               <img src="../images/smile.png" alt="" className="login-form__smile-img" />
+      <form action="submit" className="form">
+         <div className="form__content">
+            <div className="form__img">
+               <img src="../images/smile.png" alt="" className="form__smile-img" />
             </div>
-            <div className="login-form__inputs">
-               <input className="login-form__gmail-input" type="email" placeholder="Электронная почта" />
-               <input className="login-form__password-input" type="password" placeholder="Пароль" />
-               <Link className="login-form__recovery-password" to={"/recoveryPassword"}>Забыли пароль?</Link>
+            <div className="form__inputs">
+               <input className="form__gmail-input" type="email" placeholder="Электронная почта" />
+               <input className="form__password-input" type="password" placeholder="Пароль" />
+               <Link className="form__recovery-password" to={"/recoveryPassword"}>Забыли пароль?</Link>
             </div>
-            <button className="login-form__button">Войти</button>
-            <Link className="login-form__signup" to={"/signup"}>Регистрация</Link>
+            <button className="form__button">Войти</button>
+            <Link className="form__signup" to={"/signup"}>Регистрация</Link>
          </div>
       </form>
    )
