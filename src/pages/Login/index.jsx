@@ -54,7 +54,7 @@ const Login = () => {
 
                <Link className="form__recovery-password" to={"/recoveryPassword"}>Забыли пароль?</Link>
             </div>
-            <button disabled={isSubmitting} type="submit" className={values.password && values.email ? "form__button" : "form__button"}>Войти</button>
+            <button disabled={isSubmitting} type="submit" className={values.password && values.email ? "form-button-active" : "form__button"}>Войти</button>
             <Link className="form__signup" to={"/signup"}>Регистрация</Link>
          </div>
       </form>
