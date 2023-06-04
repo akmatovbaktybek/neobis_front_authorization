@@ -1,18 +1,60 @@
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import SmileImg from "components/smileImg";
+import { basicSchema } from "schemas";
 
 const Login = () => {
+   const onSubmit = async (values, actions) => {
+      alert(`
+         email: ${values.email}
+         password: ${values.password}
+      `)
+      await new Promise((resolve) => {
+         setTimeout(resolve, 1000)
+      });
+      actions.resetForm();
+   }
+
+   const { values, errors, touched, isSubmitting, handleChange, handleSubmit, handleBlur } = useFormik({
+      initialValues: {
+         email: "",
+         password: "",
+      },
+      validationSchema: basicSchema,
+      onSubmit,
+   });
+
+
    return (
-      <form action="submit" className="form">
+      <form onSubmit={handleSubmit} className="form">
          <div className="form__content">
-            <div className="form__img">
-               <img src="../images/smile.png" alt="" className="form__smile-img" />
-            </div>
+            <SmileImg />
+
             <div className="form__inputs">
-               <input className="form__gmail-input" type="email" placeholder="Электронная почта" />
-               <input className="form__password-input" type="password" placeholder="Пароль" />
+               <input
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="email"
+                  className={errors.email && touched.email ? "error-input" : ""}
+                  type="email"
+                  placeholder="Электронная почта"
+               />
+               {errors.email && touched.email && <p className="error-message">{errors.email}</p>}
+               <input
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="password"
+                  className={errors.password && touched.password ? "error-input" : ""}
+                  type="password"
+                  placeholder="Пароль"
+               />
+               {errors.password && touched.password && <p className="error-message">{errors.password}</p>}
+
                <Link className="form__recovery-password" to={"/recoveryPassword"}>Забыли пароль?</Link>
             </div>
-            <button className="form__button">Войти</button>
+            <button disabled={isSubmitting} type="submit" className={values.password && values.email ? "form__button" : "form__button"}>Войти</button>
             <Link className="form__signup" to={"/signup"}>Регистрация</Link>
          </div>
       </form>

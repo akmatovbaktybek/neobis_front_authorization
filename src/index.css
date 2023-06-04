@@ -1,11 +1,13 @@
 body {
-   margin: 0;
+   height: 100vh;
+   margin: auto 0;
    padding: 0;
    box-sizing: border-box;
    font-family: Arial, Helvetica, sans-serif;
    background-color: #5D5FEF;
    display: flex;
    justify-content: center;
+   align-items: center;
 }
 
 input {
@@ -16,6 +18,17 @@ input {
    border-radius: 8px;
    outline: none;
    padding-left: 10px;
+   margin-top: 20px;
+}
+
+.error-input {
+   border-color: #fc8181;
+}
+
+.error-message {
+   color: #fc8181;
+   font-size: 14px;
+   margin-top: 5px;
 }
 
 button {
@@ -25,7 +38,8 @@ button {
    border: none;
    border-radius: 16px;
    color: #9CA4AB;
-
+   font-weight: 700;
+   margin-top: 40px;
 }
 
 /* .container {
@@ -34,6 +48,28 @@ button {
    margin: 0 auto;
    background-color: red;
 } */
+
+.home {
+   margin: 50px 0;
+   background-color: #fff;
+   border-radius: 50px;
+}
+
+.home__content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 50px 20px;
+}
+
+.home__title {
+   margin: 0;
+}
+
+.home__cat-image {
+   margin-top: 15px;
+   max-width: 500px;
+}
 
 .form {
    margin: 50px 0;
@@ -50,22 +86,40 @@ button {
 }
 
 .form__content-title {
+   margin-top: 25px;
    font-size: 24px;
    font-weight: 700;
 }
 
+.form__content-text {
+   margin-top: 10px;
+   color: #9CA4AB;
+   line-height: 19px;
+   text-align: center;
+}
+
 .form__inputs {
+   margin-top: 20px;
    display: flex;
    flex-direction: column;
 }
 
-.form__gmail-input {
-   margin-top: 20px;
-}
 
-.form__password-input {
-   margin-top: 20px;
-}
+
+/* 
+.gmail-input-box {
+   position: relative;
+} */
+
+/* .form__gmail-placeholder {
+   position: absolute;
+   position: absolute;
+   top: 55px;
+   left: 15px;
+   font-size: 14px;
+   color: #C1C1C1;
+} */
+
 
 .form__recovery-password {
    margin-top: 20px;
@@ -75,8 +129,14 @@ button {
    font-weight: 700;
 }
 
-.form__button {
-   margin-top: 40px;
+.form-button-active {
+   color: #fff;
+   background-color: #5D5FEF;
+}
+
+.form__button:disabled {
+   background-color: #5D5FEF;
+   opacity: 0.5;
 }
 
 .form__signup {
@@ -86,6 +146,10 @@ button {
 }
 
 @media screen and (max-width:500px) {
+   .home__cat-image {
+      max-width: 300px;
+   }
+
    .form__content {
       padding: 40px 0px;
    }

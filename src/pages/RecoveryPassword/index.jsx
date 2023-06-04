@@ -8,6 +8,9 @@ const RecoveryPassword = () => {
             <div className="form__content-title">
                Сброс пароля
             </div>
+            <div className="form__content-text">
+               На введенную вами почту мы отправим ссылку, перейдя по которой вы сможете сбросить пароль
+            </div>
             <div className="form__inputs">
                <input className="form__gmail-input" type="email" placeholder="Электронная почта" />
             </div>
