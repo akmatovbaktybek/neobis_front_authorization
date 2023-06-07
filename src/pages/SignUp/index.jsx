@@ -1,17 +1,45 @@
+import SmileImg from "components/smileImg";
+import { useFormik } from "formik";
+import { basicSchema } from "schemas";
+
 const SignUp = () => {
+   const onSubmit = async (values, actions) => {
+      alert(`
+         email: ${values.email}
+      `)
+      await new Promise((resolve) => {
+         setTimeout(resolve, 1000)
+      });
+      actions.resetForm();
+   }
+
+   const { values, errors, touched, isSubmitting, handleChange, handleSubmit, handleBlur } = useFormik({
+      initialValues: {
+         email: "",
+         password: "",
+      },
+      validationSchema: basicSchema,
+      onSubmit,
+   });
+
    return (
-      <form action="submit" className="form">
+      <form onSubmit={handleSubmit} className="form">
          <div className="form__content">
-            <div className="form__img">
-               <img src="../images/smile.png" alt="" className="form__smile-img" />
-            </div>
-            <div className="form__content-title">
-               Регистрация
-            </div>
+            <SmileImg />
+
             <div className="form__inputs">
-               <input className="form__gmail-input" type="email" placeholder="Электронная почта" />
+               <input
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  id="email"
+                  className={errors.email && touched.email ? "error-input" : ""}
+                  type="email"
+                  placeholder="Электронная почта"
+               />
+               {errors.email && touched.email && <p className="error-message">{errors.email}</p>}
             </div>
-            <button className="form__button">Далее</button>
+            <button disabled={isSubmitting} type="submit" className={values.email ? "form-button-active" : "form__button"}>Войти</button>
          </div>
       </form>
    )
